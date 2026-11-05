@@ -121,6 +121,8 @@ codyssey-quiz/
 ├── README.md
 └── docs/
     └── screenshots/
+    └── test-result.md
+    └── git-practice.md
 ```
 
 | 파일 | 설명 |
@@ -197,8 +199,6 @@ codyssey-quiz/
 
 ## 7. 기능 테스트
 
-## 7. 기능 테스트
-
 다음 항목을 중심으로 프로그램의 정상 동작 여부를 확인했다.
 
 - [x] 메뉴 1~6번 선택 및 종료 기능
@@ -213,16 +213,13 @@ codyssey-quiz/
 
 자세한 실행 결과는 [기능 테스트 결과](docs/test-result.md)에 정리했다.
 
-## 8. Git 버전 관리 및 제출 확인
-
-Git을 사용하여 기능별 변경 이력을 관리하고, GitHub 저장소에 코드를 업로드한다.
 
 ## 8. Git 버전 관리 및 제출 확인
 
 Git을 사용하여 작업 이력을 관리하고 GitHub 저장소에 코드를 업로드했다.
 
 - [x] GitHub 저장소 생성 및 코드 업로드
-- [x] Git 커밋 총 10개 기록
+- [x] Git 커밋 총 10개 이상 기록
 - [x] 별도 브랜치 생성 및 main 브랜치로 병합
 - [x] Git 저장소 clone 실습
 - [x] 복제한 저장소에서 변경 후 commit 및 push
