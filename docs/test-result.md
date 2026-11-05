@@ -27,6 +27,7 @@
 - [퀴즈 목록](screenshots/quiz_list.png)
 - [퀴즈 풀이](screenshots/play.png)
 - [퀴즈 풀이 및 채점 결과](screenshots/play2.png)
+- [잘못된 숫자 및 빈 입력 등 오류처리](screenshots/EOF.png)
 - [퀴즈 추가](screenshots/add_quiz.png)
 - [퀴즈 삭제](screenshots/delete_quiz.png)
 - [최고 점수 확인](screenshots/score.png)
