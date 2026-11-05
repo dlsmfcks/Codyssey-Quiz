@@ -197,44 +197,45 @@ codyssey-quiz/
 
 ## 7. 기능 테스트
 
-다음 항목을 중심으로 프로그램의 정상 동작 여부를 확인한다.
+## 7. 기능 테스트
+
+다음 항목을 중심으로 프로그램의 정상 동작 여부를 확인했다.
 
 - [x] 메뉴 1~6번 선택 및 종료 기능
 - [x] 기본 퀴즈 7개 출력
-- [ ] 정답 및 오답 확인과 점수 계산
-- [ ] 랜덤 문제 출제
-- [ ] 새로운 퀴즈 추가 및 목록 반영
-- [ ] 퀴즈 삭제 및 JSON 반영
-- [ ] 잘못된 숫자 및 빈 입력 처리
+- [x] 정답 및 오답 확인과 점수 계산
+- [x] 랜덤 문제 출제
+- [x] 새로운 퀴즈 추가 및 목록 반영
+- [x] 퀴즈 삭제 및 JSON 반영
+- [x] 잘못된 숫자 및 빈 입력 처리
 - [ ] 프로그램 재실행 후 퀴즈와 최고 점수 유지
 - [ ] 파일 누락·손상 및 Ctrl+C/EOF 처리
+
+자세한 실행 결과는 [기능 테스트 결과](docs/test-result.md)에 정리했다.
 
 ## 8. Git 버전 관리 및 제출 확인
 
 Git을 사용하여 기능별 변경 이력을 관리하고, GitHub 저장소에 코드를 업로드한다.
 
-미션의 Git 요구사항은 다음과 같다.
+## 8. Git 버전 관리 및 제출 확인
 
-- [ ] GitHub 저장소 생성 및 코드 업로드
-- [ ] 의미 있는 커밋 10개 이상 작성
-- [ ] 별도 브랜치 생성 및 main 브랜치로 병합
-- [ ] Git 저장소 clone 실습
-- [ ] 복제한 저장소에서 변경 후 commit 및 push
-- [ ] 기존 로컬 저장소에서 pull 및 변경사항 확인
-- [ ] `git log --oneline --graph --all` 결과 캡처
+Git을 사용하여 작업 이력을 관리하고 GitHub 저장소에 코드를 업로드했다.
 
-### 실행 화면 스크린샷
+- [x] GitHub 저장소 생성 및 코드 업로드
+- [x] Git 커밋 총 10개 기록
+- [x] 별도 브랜치 생성 및 main 브랜치로 병합
+- [x] Git 저장소 clone 실습
+- [x] 복제한 저장소에서 변경 후 commit 및 push
+- [x] 기존 로컬 저장소에서 pull 및 변경사항 확인
+- [x] `git log --oneline --graph --all` 결과 캡처
 
-```text
-docs/screenshots/
-├── environment.png
-├── menu.png
-├── play.png
-├── add_quiz.png
-├── quiz_list.png
-├── delete_quiz.png
-├── score.png
-└── git_log.png
-```
+### Git 실습 결과
 
-제출 시 GitHub 저장소 URL과 개발 환경, 프로그램 실행 결과, Git 이력 화면을 함께 제출한다.
+- 총 커밋 수: 10개 (초기 생성 및 병합 커밋 포함)
+- 작업 브랜치: `feature/test`
+- 기본 브랜치: `main`
+- 브랜치 병합 및 Clone, Push, Pull 실습 완료
+
+자세한 과정은 [Git 버전 관리 실습](docs/git-practice.md)에 정리했다.
+
+[Git 커밋 이력 확인](docs/screenshots/git_log.png)
