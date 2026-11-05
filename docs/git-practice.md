@@ -34,6 +34,11 @@ git pull origin main
 
 `Fast-forward` 메시지와 함께 README 변경사항이 반영되는 것을 확인했다.
 
-## 5. 실습 결과
+## 5. Git Checkout
+
+git checkout 명령어로 feature/test 브랜치로 이동한 후,
+다시 main 브랜치로 돌아오는 실습을 진행했다.
+
+## 6. 실습 결과
 
 브랜치 생성 및 병합, Clone, Commit, Push, Pull을 수행하고 로컬 저장소와 원격 저장소의 변경사항이 동기화되는 것을 확인했다.

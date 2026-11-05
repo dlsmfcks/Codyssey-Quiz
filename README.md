@@ -120,8 +120,8 @@ codyssey-quiz/
 ├── .gitignore
 ├── README.md
 └── docs/
-    └── screenshots/
-    └── test-result.md
+    ├── screenshots/
+    ├── test-result.md
     └── git-practice.md
 ```
 
@@ -228,7 +228,7 @@ Git을 사용하여 작업 이력을 관리하고 GitHub 저장소에 코드를 
 
 ### Git 실습 결과
 
-- 총 커밋 수: 10개 (초기 생성 및 병합 커밋 포함)
+- 총 커밋 수: 10개 이상 (초기 생성 및 병합 커밋 포함)
 - 작업 브랜치: `feature/test`
 - 기본 브랜치: `main`
 - 브랜치 병합 및 Clone, Push, Pull 실습 완료
