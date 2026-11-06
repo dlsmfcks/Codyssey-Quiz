@@ -45,3 +45,11 @@
 2. [문제 푼 후 최고 점수 확인](screenshots/persistence_2.png)
 3. [프로그램 재실행 후 퀴즈 목록 확인](screenshots/persistence_3.png)
 4. [프로그램 재실행 후 최고 점수 확인](screenshots/persistence_4.png)
+
+### JSON 자동 백업 및 복구 테스트
+
+정상 저장 시 백업 파일이 생성되는 것을 확인했다.
+이후 state.json을 의도적으로 손상시킨 뒤 프로그램을 실행하여,
+백업 파일에서 데이터를 복구하고 정상 실행되는 것을 확인했다.
+
+- [자동 백업 및 복구 테스트](screenshots/backup_recovery.png)

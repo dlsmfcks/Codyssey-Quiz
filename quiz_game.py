@@ -1,5 +1,6 @@
 import json
 import random
+import shutil
 from pathlib import Path
 
 from quiz import Quiz
@@ -8,6 +9,8 @@ from quiz import Quiz
 class QuizGame:
     
     STATE_FILE = Path(__file__).resolve().parent / "state.json"
+
+    BACKUP_FILE = Path(__file__).resolve().parent / "state.backup.json"
 
     def __init__(self):
         self.quizList= []
@@ -183,50 +186,106 @@ class QuizGame:
             "best_score": self.highScore,
             "has_played": self.hasPlayed,
         }
-        
-        try:
-            with self.STATE_FILE.open("w", encoding="utf-8") as file:
-                json.dump(data, file, ensure_ascii=False, indent=4)
-        
-        except(OSError, TypeError, ValueError) as error:
-            print(f"저장 실패: {error}")
-    
 
-    def loadData(self):
+    
+        tempFile = self.STATE_FILE.with_name("state.tmp.json")
+
+    
+        backupTempFile = self.BACKUP_FILE.with_name("state.backup.tmp.json")
+
         try:
-            with self.STATE_FILE.open("r", encoding="utf-8") as file:
+        
+            with tempFile.open("w", encoding="utf-8") as file:
+                json.dump(data, file, ensure_ascii=False, indent=4)
+
+            tempFile.replace(self.STATE_FILE)
+
+        except (OSError, TypeError, ValueError) as error:
+            print(f"저장 실패: {error}")
+            return
+
+        finally:
+        
+            tempFile.unlink(missing_ok=True)
+
+        try:
+        
+            shutil.copy2(self.STATE_FILE, backupTempFile)
+
+        
+            backupTempFile.replace(self.BACKUP_FILE)
+
+        except OSError as error:
+            print(f"백업 실패: {error}")
+
+        finally:
+            backupTempFile.unlink(missing_ok=True)
+
+    def loadData(self, fromBackup=False):
+
+        filePath = self.BACKUP_FILE if fromBackup else self.STATE_FILE
+
+        try:
+            with filePath.open("r", encoding="utf-8") as file:
                 data = json.load(file)
 
-                if not isinstance(data, dict):
-                    raise ValueError("JSON 최상위 값은 '객체'여야 합니다.")
-                if not isinstance(data.get("quizzes"), list):
-                    raise ValueError("퀴즈 목록 형식이 잘못되었습니다.")
+            if not isinstance(data, dict):
+                raise ValueError("JSON 최상위 값은 객체여야 합니다.")
 
-                score = data.get("best_score")
-                if type(score) is not int or not 0 <= score <= 100:
-                    raise ValueError("최고 점수가 잘못되었습니다.")
-                
-                played = data.get("has_played", score > 0)
-                if type(played) is not bool:
-                    raise ValueError("게임 기록 정보가 잘못되었습니다.")
-                
-                loaded = []
-                for item in data["quizzes"]:
-                    if not isinstance(item, dict):
-                        raise ValueError("퀴즈 데이터 형식이 잘못되었습니다.")
-                    loaded.append(Quiz(item["question"], item["choices"], item["answer"]))
+            if not isinstance(data.get("quizzes"), list):
+                raise ValueError("퀴즈 목록 형식이 잘못되었습니다.")
 
-                self.quizList = loaded
-                self.highScore = score
-                self.hasPlayed = played
+            score = data.get("best_score")
+
+            if type(score) is not int or not 0 <= score <= 100:
+                raise ValueError("최고 점수가 잘못되었습니다.")
+
+            played = data.get("has_played", score > 0)
+
+            if type(played) is not bool:
+                raise ValueError("게임 기록 정보가 잘못되었습니다.")
+
+            loaded = []
+
+            for item in data["quizzes"]:
+                if not isinstance(item, dict):
+                    raise ValueError("퀴즈 데이터 형식이 잘못되었습니다.")
+
+                loaded.append(
+                    Quiz(
+                        item["question"],
+                        item["choices"],
+                        item["answer"]
+                    )
+                )
+
+            self.quizList = loaded
+            self.highScore = score
+            self.hasPlayed = played
+
+            if fromBackup:
+                print("백업 파일에서 데이터를 불러왔습니다.")
+                self.saveData()
+            else:
                 print(f"저장된 데이터를 불러왔습니다. (퀴즈 {len(self.quizList)}개)")
 
-        except FileNotFoundError:
-                print("저장 파일이 없어 기본 퀴즈를 사용합니다.")
-                self.setDefaultQuizzes()
-                self.saveData()
-        except (OSError, UnicodeError, json.JSONDecodeError, ValueError, TypeError, KeyError) as error:
-                print(f"저장 파일을 읽을 수 없어 기본 퀴즈로 초기화합니다: {error}")
+        except (
+            OSError,
+            UnicodeError,
+            json.JSONDecodeError,
+            ValueError,
+            TypeError,
+            KeyError
+        ) as error:
+
+            if not fromBackup:
+                print(f"저장 파일을 읽을 수 없어 백업을 확인합니다: {error}")
+
+                self.loadData(fromBackup=True)
+
+            else:
+                print(f"백업 파일도 사용할 수 없어 기본 퀴즈로 초기화합니다: {error}")
+
                 self.setDefaultQuizzes()
                 self.saveData()
 

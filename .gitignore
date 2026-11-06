@@ -5,3 +5,7 @@ __pycache__/
 venv/
 
 .vscode/
+
+state.backup.json
+state.tmp.json
+state.backup.tmp.json
