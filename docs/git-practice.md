@@ -56,3 +56,11 @@ git checkout 명령어로 feature/test 브랜치로 이동한 후,
 ## 7. 실습 결과
 
 브랜치 생성 및 병합, Clone, Commit, Push, Pull을 수행하고 로컬 저장소와 원격 저장소의 변경사항이 동기화되는 것을 확인했다.
+
+## 8. Git 실행 증빙
+
+- [GitHub 원격 저장소](https://github.com/dlsmfcks/Codyssey-Quiz)
+- [브랜치 병합 커밋](https://github.com/dlsmfcks/Codyssey-Quiz/commit/1db961e)
+- [Git 커밋 및 병합 그래프](screenshots/git_log.png)
+- [Git Clone 실행 결과](screenshots/git_clone.png)
+- [Git Pull 실행 결과](screenshots/git_pull.png)
